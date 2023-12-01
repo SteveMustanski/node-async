@@ -32,11 +32,34 @@ const getDogPic = async () => {
     console.log('Random image saved.');
   } catch (err){
     console.log(err);
+    throw(err);
   }
-}
+  return '2: Ready 🐶'
+};
 
-getDogPic();
+// IIFE - Immediately invokes due to () at the ned of the function defintion
+(async () => {
+  try {
+    console.log('1: Call dog pics');
+    const x = await getDogPic();
+    console.log(x);
+    console.log('3: Done getting dog pics');
+  } catch (error) {
+    console.log('💥Error💥');
+  }
+})();
 
+
+
+// this mixes aycn/await from above with promises .
+// console.log('1: Call dog pics');
+// getDogPic().then(x => {
+//   console.log(x);
+//   console.log('3: Done getting dog pics');
+// })
+// .catch(err => {
+//   console.log('💥Error💥');
+// });
 
 // promises
 // readFilePromise(`${__dirname}/dog.txt`)
